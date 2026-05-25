@@ -11,8 +11,34 @@ This document provides instructions for setting up Continuous Integration (CI) o
 1. **Install necessary tools**: Ensure you have all required tools installed.
    - Download and install Git from [git-scm.com](https://git-scm.com/downloads).
    - Choose a CI tool and follow its installation guide. For example:
-     - **GitHub Actions**: No installation required, configure in your repository.
-     - **Azure DevOps**: Follow the [Azure DevOps installation guide](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started/installation?view=azure-devops).
+     - **GitHub Actions**: No installation required, configure in your repository. You can create a basic workflow file as follows:
+       ```yaml
+       name: CI
+       on: [push]
+       jobs:
+         build:
+           runs-on: windows-latest
+           steps:
+           - name: Checkout code
+             uses: actions/checkout@v2
+           - name: Run tests
+             run: |
+               echo "Running tests..."
+               # Add your test commands here
+       ```
+     - **Azure DevOps**: Follow the [Azure DevOps installation guide](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started/installation?view=azure-devops). You can set up a pipeline with the following YAML:
+       ```yaml
+       trigger:
+         - main
+       pool:
+         vmImage: 'windows-latest'
+       steps:
+         - task: CmdLine@2
+           inputs:
+             script: |
+               echo "Running tests..."
+               # Add your test commands here
+       ```
 2. **Configure your CI tool**: Follow the specific instructions for your CI tool to set up the environment.
    - For GitHub Actions, create a `.github/workflows/ci.yml` file in your repository with the necessary configurations.
    - For Azure DevOps, set up a pipeline in the Azure DevOps portal.
