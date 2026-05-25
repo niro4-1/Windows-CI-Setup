@@ -47,3 +47,7 @@ This document provides instructions for setting up Continuous Integration (CI) o
 
 ## Troubleshooting
 - If you encounter issues, check the logs for errors and consult the documentation for your CI tool.
+
+## Missing Steps
+- Add step 1
+- Add step 2
