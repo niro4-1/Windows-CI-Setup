@@ -1,49 +1,19 @@
-# Windows CI Setup
+### Missing Steps
 
-This document provides instructions for setting up Continuous Integration (CI) on Windows.
-
-## Prerequisites
-- Windows 10 or later
-- Git installed
-- CI tool (e.g., GitHub Actions, Azure DevOps)
-
-## Steps
-1. **Install necessary tools**: Ensure you have all required tools installed.
-   - Download and install Git from [git-scm.com](https://git-scm.com/downloads).
-   - Choose a CI tool and follow its installation guide. For example:
-     - **GitHub Actions**: No installation required, configure in your repository. You can create a basic workflow file as follows:
-       ```yaml
-       name: CI
-       on: [push]
-       jobs:
-         build:
-           runs-on: windows-latest
-           steps:
-           - name: Checkout code
-             uses: actions/checkout@v2
-           - name: Run tests
-             run: |
-               echo "Running tests..."
-               # Add your test commands here
-       ```
-     - **Azure DevOps**: Follow the [Azure DevOps installation guide](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started/installation?view=azure-devops). You can set up a pipeline with the following YAML:
-       ```yaml
-       trigger:
-         - main
-       pool:
-         vmImage: 'windows-latest'
-       steps:
-         - task: CmdLine@2
-           inputs:
-             script: |
-               echo "Running tests..."
-               # Add your test commands here
-       ```
-2. **Configure your CI tool**: Follow the specific instructions for your CI tool to set up the environment.
-   - For GitHub Actions, create a `.github/workflows/ci.yml` file in your repository with the necessary configurations.
-   - For Azure DevOps, set up a pipeline in the Azure DevOps portal.
-3. **Run your tests**: Make sure to run your tests to verify the setup.
-   - Use the command line or the CI tool's interface to execute your test suite.
-
-## Troubleshooting
-- If you encounter issues, check the logs for errors and consult the documentation for your CI tool.
+1. **Set Environment Variables**: Ensure to set the environment variable `MY_ENV_VAR` to `value` before running the setup.
+2. **Configuration File**: For the `config.json`, include the following structure:
+   ```json
+   {
+       "key": "value"
+   }
+   ```
+3. **Path Reference**: When prompted for the path, use `C:\Program Files\MyApp` as a reference.
+4. **Install Dependencies**: Ensure you have all necessary dependencies installed. For example, run `npm install` for Node.js projects.
+5. **Configure Environment Variables**: Set up your environment variables. For example, create a `.env` file with the following content:
+   
+   ```
+   DATABASE_URL=your_database_url
+   API_KEY=your_api_key
+   ```
+6. **Run Setup Script**: Execute the setup script to initialize the application. For example, run `python setup.py` or `bash setup.sh`.
+7. **Start the Application**: Finally, start the application. For example, use `npm start` or `python app.py`.
